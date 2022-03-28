@@ -1,0 +1,164 @@
+.loginSection {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.loginSection h1,
+p {
+  margin: 0;
+}
+
+.loginError {
+  color: rgb(253, 143, 143);
+  margin: 0;
+}
+.loginSection .header p {
+  text-align: center;
+}
+.loginSection input {
+  width: 100%;
+}
+.loginSection button:hover {
+  background-color: #3c3c3c1c;
+  border-radius: 10px;
+}
+.loginSection .header {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  margin-bottom: 2rem;
+}
+@media (max-width: 767.98px) {
+  .chatSection {
+    flex-direction: column !important;
+  }
+  .chatContainer {
+    width: 100% !important;
+  }
+}
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+  align-items: center;
+}
+.chatSection {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: center;
+}
+.chatLog .userControls {
+  width: 70vw;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.chatLog .userControls textarea {
+  border-style: none !important;
+  border-width: 0 !important;
+  border-image: none !important;
+  width: 100%;
+
+  resize: none;
+}
+.chatLog .userControls textarea:focus {
+  outline: none;
+}
+.chatLog .userControls svg {
+  height: 1.5rem;
+  width: auto;
+  margin: 10px;
+}
+.chatsSection .chats {
+}
+.chatsContent {
+  display: flex;
+  flex-direction: column;
+}
+.chatsContent .channelsList {
+  max-height: 100%;
+}
+.chatContainerList {
+  display: flex;
+  flex-direction: column;
+}
+.chatContainerList .chatContainerListItem {
+  padding: 10px;
+  align-self: flex-start;
+}
+.chatContainerListItem.user {
+  align-self: flex-end;
+  color: black;
+}
+.d-none {
+  display: none;
+}
+.chatContainer {
+  height: calc(((100vh - 56px) - 147px) - 35px);
+  width: 70vw;
+  overflow-y: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.chatContainer::-webkit-scrollbar {
+  width: 10px;
+}
+.chatContainer::-webkit-scrollbar-track {
+  background: none;
+}
+.chatContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 10px 10px 10px 10px;
+  border-image: url(./button.svg) 10 10 10 10 stretch stretch;
+}
+.chatContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.chatContainer .chatContainerList {
+}
+.chatContainer .chatContainerList .chatItem {
+}
+.disconnectBtn {
+  margin-top: auto !important;
+}
+.divider {
+  border-style: solid;
+  border-width: 10px 10px 10px 10px;
+  border-image: url(./button.svg) 10 10 10 10 stretch stretch;
+
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin: 1rem 0rem;
+}
+
+.home-list li {
+  display: inline;
+  margin: 1rem;
+}
+.home-list {
+  padding: 0;
+  text-align: center;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  cursor: pointer;
+}
+
+.logo {
+  width: 150px;
+  height: 100%;
+}
