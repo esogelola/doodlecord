@@ -67,16 +67,16 @@ function App() {
 
         console.log("New User joining");
       } else {
-        const newPChats = pChats.filter((pChat) => pChat.name !== outUser);
-        setUsers(newUsers);
-        setPChats(newPChats);
+        // const newPChats = pChats.filter((pChat) => pChat.name !== outUser);
+        // setUsers(newUsers);
+        // setPChats(newPChats);
       }
     };
   return user ? (
     <ChatPage
       user={user}
       users={users}
-      pChats={pChats}
+      // pChats={pChats}
       socket={socket}
       logout={logout}
     />
