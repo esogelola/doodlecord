@@ -15,8 +15,8 @@ const PORT = 5000;
 const socketManage = require("./manage")(io);
 io.on("connection", socketManage);
 
-// const path = require("path");
-// app.use(express.static(path.join(__dirname, "../build")));
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../build")));
 
 server.listen({ port: PORT }, () =>
   console.log(`🚀 Server ready at http://localhost:${PORT}`)
