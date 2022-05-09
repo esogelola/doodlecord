@@ -39,6 +39,13 @@ p {
   .chatContainer {
     width: 100% !important;
   }
+  .userControls{
+    width: 100vw  !important;
+  }
+  .emoji-picker-react{
+    bottom: 0 !important;
+
+  }
 }
 
 .chats {
@@ -91,6 +98,7 @@ p {
 .chatContainerList .chatContainerListItem {
   padding: 10px;
   align-self: flex-start;
+  width: 75%;
 }
 .chatContainerListItem.user {
   align-self: flex-end;
@@ -161,4 +169,21 @@ button {
 .logo {
   width: 150px;
   height: 100%;
+}
+
+.emojiContainer{
+  width: 100%;
+}
+.emoji-picker-react{
+  position: absolute !important;
+  right: 10%;
+  bottom: 30%;
+
+}
+.userControls svg{
+  cursor: pointer;
+}
+
+.audioContainer{
+  width: 100%;
 }

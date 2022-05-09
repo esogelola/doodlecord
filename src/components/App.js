@@ -16,7 +16,7 @@ function App() {
 
   const [socket, setSocket] = useState(null);
   const [users, setUsers] = useState({});
-  const [pChats, setPChats] = useState([]);
+  const [serverChats, setServerChats] = useState([]);
 
   useEffect(() => {
     const newSocket = io(`http://${window.location.hostname}:5000`);
@@ -26,12 +26,11 @@ function App() {
     newSocket.on(EVENTS.NEW_USER, onAuth(true));
 
     return () => newSocket.close();
-  }, [setSocket]);
+  }, []);
 
   const login = (currentUser) => {
     console.log(currentUser);
     setUser(currentUser);
-    console.log(currentUser);
     socket.emit(EVENTS.NEW_USER, currentUser, setServer);
   };
 
@@ -44,25 +43,29 @@ function App() {
     (isNewUsers) =>
     ({ newUsers, outUser }) => {
       if (isNewUsers) {
-        const newPChats = [...pChats];
-        const oldPChats = pChats.map((pChat) => pChat.name);
+        const newServerChats = [...serverChats];
 
-        user &&
-          Object.keys(newUsers).map((newUser) => {
-            if (newUser !== user.nickname && !oldPChats.includes(newUser)) {
-              newPChats.push({
-                name: newUser,
-                description: "direct message",
-                messages: [],
-                isTyping: false,
-                msgCount: 0,
-                type: "Private",
-              });
-            }
-            return null;
-          });
-        setUsers(newUsers);
-        setPChats(newPChats);
+        // const newPChats = [...pChats];
+        // const oldPChats = pChats.map((pChat) => pChat.name);
+
+        // user &&
+        //   Object.keys(newUsers).map((newUser) => {
+        //     if (newUser !== user.nickname && !oldPChats.includes(newUser)) {
+        //       newPChats.push({
+        //         name: newUser,
+        //         description: "direct message",
+        //         messages: [],
+        //         isTyping: false,
+        //         msgCount: 0,
+        //         type: "Private",
+        //       });
+        //     }
+        //     return null;
+        //   });
+        // setUsers(newUsers);
+        // setPChats(newPChats);
+
+        console.log("New User joining");
       } else {
         const newPChats = pChats.filter((pChat) => pChat.name !== outUser);
         setUsers(newUsers);
