@@ -10,7 +10,7 @@ const io = require("socket.io")(server, {
   },
 });
 app.use(cors());
-const PORT = 5000;
+const PORT = process.env.PORT || 80;
 
 const socketManage = require("./manage")(io);
 io.on("connection", socketManage);
