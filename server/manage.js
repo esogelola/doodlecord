@@ -6,23 +6,26 @@ let servers = {
 };
 
 module.exports = (io) => (socket) => {
-  socket.on(events.IS_USER_TAKEN, (nickname, uniqueServerID, cb) => {
+  socket.on(events.CONNECT_USER, (nickname, uniqueServerID, cb) => {
+    // We check if the server they are trying to join exist, if not we create a new server. If it does if connect the user to the sevrer they trying to join
     let doesServerExist = methods.doesServerExist(uniqueServerID, servers);
     let nickNameIsTaken = true;
+    //USI => User SERVER ID
     let USI = null;
-    console.log(doesServerExist);
+
     if (doesServerExist) {
-      console.log(servers[uniqueServerID].users);
       nickNameIsTaken = methods.isNicknameTaken(
         servers[uniqueServerID].users,
         nickname
       );
-      console.log(nickNameIsTaken);
+
       USI = uniqueServerID;
     } else {
       // Create new server here
       let newServer = methods.createServer();
+      console.log({ newServer });
       servers[newServer.uniqueServerID] = newServer.data[0];
+      console.log({ servers });
       USI = newServer.uniqueServerID;
       nickNameIsTaken = false;
     }
@@ -49,8 +52,8 @@ module.exports = (io) => (socket) => {
       servers[uniqueServerID],
       user.user
     );
+    console.log(uniqueServerID);
     socket.user = user;
-    console.log(servers[uniqueServerID].users);
 
     io.emit(events.NEW_USER, { newUsers: servers[uniqueServerID].users });
   });

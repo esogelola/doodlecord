@@ -4,12 +4,16 @@ var Filter = require("bad-words"),
 
 const isBadWords = (nickname) => filter.isProfane(nickname);
 
-const isNicknameTaken = (users, nickname) => nickname in users;
+const isNicknameTaken = (users, nickname) => {
+  console.log({ users, nickname });
+  return false;
+};
 
 const createUser = (nickname, socketId) => ({ nickname, socketId });
 
 const addUsers = (server, user) => {
-  server.users[user.nickname] = user.nickname;
+  console.log({ server });
+  // server.users[user.nickname] = user.nickname;
 
   return [];
 };

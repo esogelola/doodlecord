@@ -19,11 +19,8 @@ function App() {
   const [serverChats, setServerChats] = useState([]);
 
   useEffect(() => {
-    const newSocket = io(`http://${window.location.hostname}:5000`);
-
+    const newSocket = io(`http://${window.location.hostname}:${4200}`);
     setSocket(newSocket);
-    newSocket.on(EVENTS.LOGOUT, onAuth(false));
-    newSocket.on(EVENTS.NEW_USER, onAuth(true));
 
     return () => newSocket.close();
   }, []);
@@ -39,47 +36,8 @@ function App() {
     setUser(null);
   };
 
-  const onAuth =
-    (isNewUsers) =>
-    ({ newUsers, outUser }) => {
-      if (isNewUsers) {
-        const newServerChats = [...serverChats];
-
-        // const newPChats = [...pChats];
-        // const oldPChats = pChats.map((pChat) => pChat.name);
-
-        // user &&
-        //   Object.keys(newUsers).map((newUser) => {
-        //     if (newUser !== user.nickname && !oldPChats.includes(newUser)) {
-        //       newPChats.push({
-        //         name: newUser,
-        //         description: "direct message",
-        //         messages: [],
-        //         isTyping: false,
-        //         msgCount: 0,
-        //         type: "Private",
-        //       });
-        //     }
-        //     return null;
-        //   });
-        // setUsers(newUsers);
-        // setPChats(newPChats);
-
-        console.log("New User joining");
-      } else {
-        // const newPChats = pChats.filter((pChat) => pChat.name !== outUser);
-        // setUsers(newUsers);
-        // setPChats(newPChats);
-      }
-    };
   return user ? (
-    <ChatPage
-      user={user}
-      users={users}
-      // pChats={pChats}
-      socket={socket}
-      logout={logout}
-    />
+    <ChatPage user={user} users={users} socket={socket} logout={logout} />
   ) : (
     <LoginPage socket={socket} login={login} />
   );

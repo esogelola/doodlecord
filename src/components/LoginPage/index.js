@@ -10,10 +10,11 @@ function LoginPage({ login, socket }) {
   const handleSubmit = () => {
     let nickname = nicknameRef.current.value;
 
-    let isValid = Boolean(nickname);
+    let isNotEmpty = Boolean(nickname);
 
     const setUser = ({ user, hasError, server }) => {
       if (hasError) {
+        console.log(hasError);
         setError(hasError);
       } else {
         setError("");
@@ -22,12 +23,12 @@ function LoginPage({ login, socket }) {
     };
 
     // If the user has put a nickname
-    if (isValid) {
+    if (isNotEmpty) {
       // We check if the users nickname is taken and then if not set the users nickname
       // Also checks if the user is creating a chat or is joining a chat
 
       socket.emit(
-        EVENTS.IS_USER_TAKEN,
+        EVENTS.CONNECT_USER,
         nickname,
         uniqueServerID.current.value,
         setUser
